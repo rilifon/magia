@@ -12,20 +12,19 @@ char awesome_compare(char* str0, char* str1) {
     return 1;
 }
 
-int random(int max) {
+int _random(int max) {
 	double ret_val = ((double)rand())/RAND_MAX;
 	return ret_val*max+1;
 }
 
 void roll_dice(char* dice) {
 	int d = atoi(dice);
-	printf("You roll a D%d and gets a %d!", d, random(d));
+	printf("\nVoce roda um D%d e tira %d!", d, _random(d));
 }
 
 int main (){
     int i, n, dano, alive, init;
-    int lives[10];
-    char winner = 0;    
+    int lives[10];    
     char name[10];
     char players[10][10];
 
@@ -48,27 +47,57 @@ int main (){
 
     alive = n;
 
-    while(!winner) {
-        puts ("\n######################\n");
+    while(1) {
+        puts ("\n        --------\n");
         for(i=0;i<n;++i)
             printf("> %s tem %d pontos de vida\n", players[i], lives[i]);
 
         puts ("\n        --------\n");
-        puts("Digite o target ou digite um numero n para rodar um Dn:");
+        puts("################################################################");
+        puts("# Digite o alvo para aplicar dano ou aumentar vida             #");
+        puts("# Digite n para rolar um Dn                                    #");
+        puts("# Digite \"extort\" e o nome de um alvo para ele extorquir       #");
+        puts("# Digite \"ganhou\" e o nome de um alvo para delarar o vencedor  #");
+        puts("################################################################");
         fflush(stdin);
         scanf("%s", name);
         if(is_digit(name[0])) {
         	roll_dice(name);
         	continue;
         }
-        puts("Digite a diferenca de vida:");
-        scanf("%d", &dano);
+        else if(!strcmp(name, "ganhou")) {
+            scanf(" %s", name);
+            for(i=0; i<n; i++) {
+                if(!awesome_compare(name, players[i])){
+                lives[i] = 0;
+                --alive;
+                }
+            }
+        }
+        else if(!strcmp(name, "extort")) {
+            int life = 0;
+            scanf(" %s", name);
+            for(i=0; i<n; i++)
+                if(!awesome_compare(name, players[i])){
+                    if(lives[i] > 0){
+                        lives[i] -= 1;
+                        life++;
+                    }
+            }
+            for(i=0; i<n; i++)
+                if(awesome_compare(name, players[i]))
+                    lives[i] += life;
+        }
+        else {
+            puts("Digite a diferenca de vida:");
+            scanf("%d", &dano);
 
-        for(i=0;i<n;++i) {
-            if(awesome_compare(name, players[i])) {
-                lives[i] += dano;
-                if(lives[i] <= 0)
-                    --alive;
+            for(i=0;i<n;++i) {
+                if(awesome_compare(name, players[i])) {
+                    lives[i] += dano;
+                    if(lives[i] <= 0)
+                        --alive;
+                }
             }
         }
 

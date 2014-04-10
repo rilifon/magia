@@ -19,7 +19,7 @@ int _random(int max) {
 
 void roll_dice(char* dice) {
 	int d = atoi(dice);
-	printf("\n        >>>Voce roda um D%d e tira %d!<<<\n", d, _random(d));
+	printf("\n>>>Voce roda um D%d e tira %d!<<<\n", d, _random(d));
 }
 
 int main (){

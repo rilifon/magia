@@ -87,6 +87,7 @@ int main (){
                     if(!awesome_compare(name, players[i])){
                         if(lives[i] > 0){
                             lives[i] -= 1;
+                            if(lives[i] <= 0) --alive;
                             life++;
                         }
                 }

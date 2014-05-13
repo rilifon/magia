@@ -113,6 +113,8 @@ int main (){
             for(i=0;i<n;++i)
                 if(lives[i]>0)
                     printf(">>>> %s GANHOU! <<<<\n\n", players[i]);
+                    printf("\n\nAperte enter para continuar\n\n");
+                    scanf("");
             return 0;
         }
     }

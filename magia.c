@@ -33,9 +33,9 @@ int main (){
 	srand(time(NULL));
 	rand(), rand();
     while(command) {
-        printf("#################################\n#################################\n");
-        printf("##### MEGA CONTADOR DE VIDA #####\n");
-        printf("#################################\n#################################\n");
+        printf("*********************************\n");
+        printf("&&&&& MEGA CONTADOR DE VIDA &&&&&\n");
+        printf("*********************************\n");
         printf("\n            -by totoro and rica\n\n");
         puts("Digite o total de vida inicial:");
         scanf("%d", &init);
@@ -123,6 +123,7 @@ int main (){
                         printf(">>>> %s GANHOU! <<<<\n\n", players[i]);
                         printf("\n\nDigite 0 para finalizar ou 1 para continuar\n\n>");
                         scanf("%d",&command);
+                        printf("\n\n");
                         break;
             }
         }

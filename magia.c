@@ -24,18 +24,19 @@ void roll_dice(char* dice) {
 }
 
 int main (){
-    int i, n, dano, alive, init,game;
+    int i, n, dano, alive, init;
     int lives[10];
     char name[10], name2[10];
     char players[10][10];
-    int command = 666;
+    int command = 1;
 
 	srand(time(NULL));
 	rand(), rand();
     while(command) {
-        game = 1;
-        printf("\n##### MEGA CONTADOR DE VIDA #####\n\n            ~by totoro and rica\n\n");
-
+        printf("#################################\n#################################\n");
+        printf("##### MEGA CONTADOR DE VIDA #####\n");
+        printf("#################################\n#################################\n");
+        printf("\n            -by totoro and rica\n\n");
         puts("Digite o total de vida inicial:");
         scanf("%d", &init);
         puts("Numero de pessoas:");
@@ -49,7 +50,7 @@ int main (){
 
         alive = n;
 
-        while(game) {
+        while(command) {
             puts ("\n        --------\n");
             for(i=0;i<n;++i)
                 printf("> %s tem %d pontos de vida\n", players[i], lives[i]);
